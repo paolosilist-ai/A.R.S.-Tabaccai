@@ -4,26 +4,17 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>A.R.S. – Soluzioni per Tabaccai | Tabacchi Cloud</title>
-  <meta name="description" content="A.R.S. Advanced Retail Services: Tabacchi Cloud per tabaccai. Anagrafiche aggiornate automaticamente, ordini Logista rapidi, magazzino sotto controllo." />
+  <meta name="description" content="Tabacchi Cloud per tabaccai: aggiornamenti automatici, ordini Logista rapidi, magazzino sotto controllo. Richiedi una demo." />
   <meta name="theme-color" content="#0b1220" />
-
   <style>
     :root{
-      --bg:#07101f;
-      --bg2:#0b1730;
-      --card:rgba(255,255,255,.06);
-      --card2:rgba(255,255,255,.04);
-      --border:rgba(255,255,255,.10);
-      --text:#eaf0ff;
-      --muted:#b9c6ea;
-      --accent:#2f7ef7;
-      --accent2:#5aa8ff;
-      --ok:#2fe39b;
-      --shadow: 0 18px 50px rgba(0,0,0,.40);
-      --radius:18px;
-      --max:1120px;
+      --bg:#07101f; --bg2:#0b1730;
+      --text:#eaf0ff; --muted:#b9c6ea;
+      --card:rgba(255,255,255,.06); --border:rgba(255,255,255,.10);
+      --accent:#2f7ef7; --accent2:#5aa8ff;
+      --shadow: 0 18px 50px rgba(0,0,0,.38);
+      --radius:18px; --max:1120px;
     }
-
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{
@@ -31,19 +22,13 @@
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
       color:var(--text);
       background:
-        radial-gradient(1200px 700px at 15% 0%, rgba(47,126,247,.30), transparent 60%),
-        radial-gradient(900px 600px at 90% 8%, rgba(90,168,255,.24), transparent 55%),
-        radial-gradient(1000px 700px at 50% 120%, rgba(47,227,155,.12), transparent 60%),
+        radial-gradient(1100px 650px at 15% 0%, rgba(47,126,247,.30), transparent 60%),
+        radial-gradient(900px 600px at 90% 8%, rgba(90,168,255,.20), transparent 55%),
         linear-gradient(180deg, var(--bg), var(--bg2));
       line-height:1.5;
     }
-
     a{color:inherit}
-    .wrap{max-width:var(--max); margin:0 auto; padding:22px}
-    .section{padding:44px 0}
-    .grid{display:grid; gap:14px}
-
-    /* Top bar */
+    .wrap{max-width:var(--max); margin:0 auto; padding:20px}
     .top{
       position:sticky; top:0; z-index:50;
       backdrop-filter: blur(10px);
@@ -51,166 +36,113 @@
       border-bottom:1px solid var(--border);
     }
     .top-inner{
-      max-width:var(--max); margin:0 auto; padding:12px 22px;
+      max-width:var(--max); margin:0 auto; padding:12px 20px;
       display:flex; align-items:center; justify-content:space-between; gap:14px;
     }
     .brand{display:flex; align-items:center; gap:12px; text-decoration:none}
-    .brand img{height:42px; width:auto; display:block}
-    .brand .name{display:flex; flex-direction:column}
+    .brand img{height:40px; width:auto; display:block}
     .brand b{letter-spacing:.08em; font-size:13px}
-    .brand span{font-size:12px; color:var(--muted)}
-    .nav{display:flex; gap:12px; align-items:center; flex-wrap:wrap}
-    .nav a{font-size:13px; color:var(--muted); text-decoration:none}
-    .nav a:hover{color:var(--text)}
-
-    /* Buttons */
+    .brand span{display:block; font-size:12px; color:var(--muted)}
     .btns{display:flex; gap:10px; flex-wrap:wrap}
     .btn{
       display:inline-flex; align-items:center; justify-content:center;
       padding:12px 16px; border-radius:999px;
       border:1px solid var(--border);
       background: rgba(255,255,255,.06);
-      text-decoration:none;
-      font-weight:800;
-      letter-spacing:.02em;
-      cursor:pointer;
-      user-select:none;
+      text-decoration:none; font-weight:800;
     }
     .btn.primary{
       background: linear-gradient(135deg, var(--accent), var(--accent2));
-      border-color: transparent;
-      color:#07101f;
+      border-color: transparent; color:#07101f;
     }
-    .btn.ghost{
-      background: rgba(255,255,255,.02);
-    }
-    .btn:hover{transform: translateY(-1px)}
-    .btn:active{transform: translateY(0)}
+    .btn:hover{transform:translateY(-1px)}
+    .btn:active{transform:translateY(0)}
 
-    /* Hero */
-    .hero{
-      display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap:16px;
-      align-items:stretch;
-    }
+    .section{padding:36px 0}
     .panel{
       border:1px solid var(--border);
-      border-radius: var(--radius);
-      background: var(--card);
-      box-shadow: var(--shadow);
-      padding:22px;
+      border-radius:var(--radius);
+      background:var(--card);
+      box-shadow:var(--shadow);
+      padding:20px;
     }
-    .badge{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:8px 12px;
-      border-radius:999px;
-      border:1px solid var(--border);
-      background: rgba(255,255,255,.03);
-      color:var(--muted);
-      font-size:13px;
+    .hero{
+      display:grid; grid-template-columns: 1.05fr .95fr; gap:14px; align-items:stretch;
     }
-    h1{
-      margin:12px 0 10px;
-      font-size:44px;
-      line-height:1.06;
-      letter-spacing:-.02em;
-    }
-    .lead{
-      margin:0 0 16px;
-      color:var(--muted);
-      font-size:16px;
-      max-width: 62ch;
-    }
-    .checks{
-      list-style:none;
-      margin:16px 0 0;
-      padding:0;
-      display:grid;
-      gap:10px;
-    }
-    .checks li{
+    h1{margin:10px 0 10px; font-size:42px; line-height:1.06; letter-spacing:-.02em}
+    .lead{margin:0 0 14px; color:var(--muted); font-size:16px; max-width:60ch}
+    .bullets{margin:14px 0 0; padding:0; list-style:none; display:grid; gap:10px}
+    .bullets li{
       border:1px solid var(--border);
       border-radius:14px;
       background: rgba(255,255,255,.04);
       padding:12px 12px;
+      color:var(--muted);
     }
-    .checks b{color:var(--ok)}
-    .kpis{
-      display:grid; gap:12px;
-    }
-    .kpi{
+    .bullets b{color:var(--text)}
+    .media{
+      border-radius:var(--radius);
+      overflow:hidden;
       border:1px solid var(--border);
-      border-radius:14px;
       background: rgba(255,255,255,.04);
-      padding:14px;
+      height:100%;
+      display:flex;
+      align-items:stretch;
     }
-    .kpi strong{display:block; font-size:18px}
-    .kpi span{display:block; color:var(--muted); font-size:13px; margin-top:4px}
+    .media img{
+      width:100%; height:100%;
+      object-fit:cover;
+      display:block;
+    }
 
-    /* Cards */
-    .cards{grid-template-columns: repeat(3, 1fr)}
+    .two{
+      display:grid; grid-template-columns: 1fr 1fr; gap:14px;
+    }
+    .list{margin:10px 0 0; padding-left:18px; color:var(--muted)}
+    .list li{margin:6px 0}
+
+    .cards{
+      display:grid; grid-template-columns: repeat(3, 1fr); gap:14px;
+    }
     .card{
       border:1px solid var(--border);
-      border-radius: var(--radius);
-      background: var(--card2);
+      border-radius:var(--radius);
+      background: rgba(255,255,255,.04);
       padding:18px;
     }
     .card h3{margin:0 0 8px; font-size:16px}
     .card p{margin:0; color:var(--muted); font-size:14px}
 
-    /* Split */
-    .split{grid-template-columns: 1fr 1fr}
-    .list{
-      margin:10px 0 0;
-      padding-left:18px;
-      color:var(--muted);
-      font-size:14px;
+    .cta{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:14px; flex-wrap:wrap;
     }
-    .list li{margin:6px 0}
+    .cta h2{margin:0; font-size:22px}
+    .cta p{margin:6px 0 0; color:var(--muted)}
 
-    /* FAQ */
-    details{
-      border:1px solid var(--border);
-      border-radius: 14px;
-      background: rgba(255,255,255,.04);
-      padding:12px 14px;
-    }
-    details + details{margin-top:10px}
-    summary{
-      cursor:pointer;
-      font-weight:800;
-      letter-spacing:.01em;
-    }
-    details p{margin:10px 0 0; color:var(--muted); font-size:14px}
-
-    /* Footer */
     .footer{
-      margin:24px 0 10px;
+      margin:22px 0 10px;
       color:var(--muted);
       font-size:12px;
-      display:flex;
-      justify-content:space-between;
-      gap:10px;
-      flex-wrap:wrap;
+      display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;
     }
 
-    /* Mobile */
-    @media (max-width: 960px){
+    @media (max-width: 980px){
       .hero{grid-template-columns:1fr}
-      h1{font-size:36px}
+      .two{grid-template-columns:1fr}
       .cards{grid-template-columns:1fr}
-      .split{grid-template-columns:1fr}
-      .nav{display:none}
+      h1{font-size:34px}
     }
   </style>
 
   <script>
-    // Email anti-spam (non in chiaro nel DOM)
+    // Email anti-spam
     function openEmail(){
       const user = "commerciale";
       const domain = "ars-bs.it";
-      window.location.href = "mailto:" + user + "@" + domain + "?subject=" + encodeURIComponent("Richiesta demo Tabacchi Cloud");
+      window.location.href =
+        "mailto:" + user + "@" + domain +
+        "?subject=" + encodeURIComponent("Richiesta demo Tabacchi Cloud");
       return false;
     }
   </script>
@@ -218,28 +150,17 @@
 
 <body>
 
-  <!-- Sticky top bar -->
   <div class="top">
     <div class="top-inner">
       <a class="brand" href="#top">
-        <!-- Carica il logo qui: /assets/ars-logo.png -->
         <img src="assets/ars-logo.png" alt="A.R.S. logo" />
-        <div class="name">
+        <div>
           <b>A.R.S.</b>
           <span>Advanced Retail Services</span>
         </div>
       </a>
-
-      <div class="nav">
-        <a href="#soluzione">Soluzione</a>
-        <a href="#funzioni">Funzioni</a>
-        <a href="#come-funziona">Come funziona</a>
-        <a href="#faq">FAQ</a>
-        <a href="#contatti">Contatti</a>
-      </div>
-
       <div class="btns">
-        <a class="btn ghost" href="#contatti">Contatti</a>
+        <a class="btn" href="#contatti">Contatti</a>
         <a class="btn primary" href="#demo">Richiedi una demo</a>
       </div>
     </div>
@@ -247,14 +168,12 @@
 
   <div id="top" class="wrap">
 
-    <!-- HERO -->
+    <!-- HERO (snella) -->
     <div class="section hero">
       <div class="panel">
-        <span class="badge">Soluzioni per tabaccai • aggiornato in tempo reale • meno errori</span>
         <h1>Gestisci la tabaccheria senza stress.</h1>
         <p class="lead">
-          Con <b>Tabacchi Cloud</b> hai anagrafiche aggiornate automaticamente, ordini Logista rapidi
-          e magazzino sempre allineato tra <b>store</b>, <b>patentini</b> e <b>distributori</b>.
+          <b>Tabacchi Cloud</b> ti aiuta a lavorare meglio: anagrafiche aggiornate, ordini Logista rapidi e magazzino sempre allineato.
         </p>
 
         <div class="btns" id="demo">
@@ -262,121 +181,74 @@
           <a class="btn" href="https://wa.me/393473838725?text=Ciao%2C%20vorrei%20una%20demo%20di%20Tabacchi%20Cloud." target="_blank" rel="noopener">WhatsApp</a>
         </div>
 
-        <ul class="checks">
-          <li><b>✓</b> Anagrafiche complete (AAMS), codici e barcode sempre aggiornati</li>
-          <li><b>✓</b> Ordini Logista: manuale o proposta di riordino basata sul venduto</li>
-          <li><b>✓</b> Magazzino cloud + ricevimento merce con evidenza discordanze</li>
+        <ul class="bullets">
+          <li><b>Aggiornamenti automatici</b> (AAMS) senza interventi manuali</li>
+          <li><b>Ordini Logista</b> in pochi click (anche proposta di riordino)</li>
+          <li><b>Magazzino</b> sotto controllo: store, patentini, distributori</li>
         </ul>
       </div>
 
-      <div class="panel kpis">
-        <div class="kpi">
-          <strong>Meno errori</strong>
-          <span>Riduci problemi su codici, barcode, unità di vendita e giacenze.</span>
-        </div>
-        <div class="kpi">
-          <strong>Meno tempo perso</strong>
-          <span>Riordino più veloce e guidato: ordini chiari in pochi click.</span>
-        </div>
-        <div class="kpi">
-          <strong>Più controllo</strong>
-          <span>Report e analisi vendite per monitorare davvero l’andamento.</span>
-        </div>
-        <div class="kpi">
-          <strong>Integrazioni</strong>
-          <span>Cassetti automatici, RT fiscali, POS, etichette elettroniche.</span>
-        </div>
+      <!-- Immagine HERO -->
+      <div class="media" aria-label="Immagine tabaccheria o dashboard">
+        <!-- Sostituisci con: assets/dashboard.jpg oppure assets/tabaccheria.jpg -->
+        <img src="assets/dashboard.jpg" alt="Schermata gestionale / dashboard" />
       </div>
     </div>
 
-    <!-- PROBLEMA / SOLUZIONE -->
-    <div class="section grid split" id="soluzione">
-      <div class="card">
-        <h3>I problemi di ogni giorno</h3>
-        <p>Se gestisci una tabaccheria, lo sai: basta poco per perdere tempo e serenità.</p>
-        <ul class="list">
-          <li>Aggiornamenti manuali delle anagrafiche</li>
-          <li>Errori su codici, prezzi e unità di vendita</li>
-          <li>Ordini Logista lunghi e complicati</li>
-          <li>Magazzino disallineato (store/patentini/distributori)</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h3>La soluzione: Tabacchi Cloud</h3>
-        <p>Un servizio cloud che aggiorna e sincronizza tutto automaticamente, riducendo errori e tempi morti.</p>
-        <ul class="list">
-          <li>Aggiornamenti giornalieri secondo variazioni ufficiali</li>
-          <li>Ordini con proposta di riordino modificabile</li>
-          <li>Export Excel pronto per il caricamento su Logista</li>
-          <li>Gestione ricevimento merce e discordanze</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- FUNZIONI -->
-    <div class="section" id="funzioni">
+    <!-- PROBLEMA -> SOLUZIONE (unica sezione, breve) -->
+    <div class="section two">
       <div class="panel">
-        <h2 style="margin:0 0 12px; font-size:24px; letter-spacing:-.01em;">Cosa include</h2>
-        <div class="grid cards">
+        <h2 style="margin:0 0 10px; font-size:22px;">Problemi comuni</h2>
+        <ul class="list">
+          <li>Aggiornamenti manuali e rischio errori</li>
+          <li>Ordini Logista lunghi e disordinati</li>
+          <li>Magazzino non allineato</li>
+          <li>Poco controllo su vendite e riassortimenti</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h2 style="margin:0 0 10px; font-size:22px;">Cosa fa Tabacchi Cloud</h2>
+        <ul class="list">
+          <li>Allinea e aggiorna le anagrafiche automaticamente</li>
+          <li>Ti guida nell’ordine Logista (export pronto)</li>
+          <li>Sincronizza giacenze tra punti vendita/asset</li>
+          <li>Ti dà un controllo più chiaro dell’operatività</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- FUNZIONI (ridotte a 3) -->
+    <div class="section">
+      <div class="panel">
+        <h2 style="margin:0 0 12px; font-size:22px;">In pratica: 3 cose che ti cambiano la giornata</h2>
+        <div class="cards">
           <div class="card">
-            <h3>Anagrafiche Cloud</h3>
-            <p>AAMS, descrizioni, unità di riordino, barcode pacchetti e stecche sempre aggiornati.</p>
+            <h3>Anagrafiche sempre aggiornate</h3>
+            <p>Codici/descrizioni/unità/barcode allineati: meno errori in vendita e magazzino.</p>
           </div>
           <div class="card">
-            <h3>Ordini Cloud</h3>
-            <p>Ordine Logista rapido: manuale o proposta automatica basata sul venduto del periodo scelto.</p>
+            <h3>Ordini Logista più veloci</h3>
+            <p>Ordine manuale o proposto dal venduto. Export Excel pronto per Logista.</p>
           </div>
           <div class="card">
-            <h3>Magazzino Cloud</h3>
-            <p>Giacenze aggiornate in tempo reale per store e patentini, con ricevimento merce e verifiche.</p>
+            <h3>Magazzino sotto controllo</h3>
+            <p>Visione unica di store, patentini e distributori. Più precisione, meno differenze.</p>
           </div>
-          <div class="card">
-            <h3>Analisi vendite</h3>
-            <p>Report dettagliati su vendite dirette, distributori esterni e patentini.</p>
-          </div>
-          <div class="card">
-            <h3>Integrazione dispositivi</h3>
-            <p>Compatibile con cassetti automatici, RT fiscali, POS e etichette elettroniche.</p>
-          </div>
-          <div class="card">
-            <h3>Software di vendita</h3>
-            <p>In base all’attività: Passepartout Retail (market) o Menù (ristorazione).</p>
-          </div>
+        </div>
+
+        <!-- Immagine di supporto sotto (opzionale ma bella) -->
+        <div style="margin-top:14px" class="media">
+          <img src="assets/tabaccheria.jpg" alt="Tabaccheria ordinata al banco" />
         </div>
       </div>
     </div>
 
-    <!-- COME FUNZIONA -->
-    <div class="section grid split" id="come-funziona">
-      <div class="card">
-        <h3>Come si parte</h3>
-        <p>Onboarding rapido: ti guidiamo noi, senza complicazioni.</p>
-        <ul class="list">
-          <li>Analisi rapida del tuo flusso (vendita, magazzino, riordino)</li>
-          <li>Configurazione iniziale e collegamenti dispositivi</li>
-          <li>Verifica anagrafiche e sincronizzazione</li>
-          <li>Formazione breve e operativa</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3>Cosa ottieni subito</h3>
-        <p>Risultati pratici dal primo giorno.</p>
-        <ul class="list">
-          <li>Database di vendita aggiornato automaticamente</li>
-          <li>Ordini Logista più veloci e ordinati</li>
-          <li>Magazzino più preciso (meno differenze)</li>
-          <li>Controllo vendite e riassortimenti più chiaro</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- CTA -->
+    <!-- CTA finale (pulita) -->
     <div class="section">
-      <div class="panel" id="contatti" style="display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap;">
+      <div class="panel cta" id="contatti">
         <div>
-          <h2 style="margin:0; font-size:24px; letter-spacing:-.01em;">Vuoi vedere Tabacchi Cloud dal vivo?</h2>
-          <p style="margin:6px 0 0; color:var(--muted);">Una demo rapida, concreta, senza perdite di tempo.</p>
+          <h2>Vuoi una demo rapida?</h2>
+          <p>Ti mostriamo tutto in pochi minuti, in modo concreto.</p>
         </div>
         <div class="btns">
           <a class="btn primary" href="#" onclick="return openEmail();">Richiedi una demo</a>
@@ -385,36 +257,9 @@
       </div>
     </div>
 
-    <!-- FAQ -->
-    <div class="section" id="faq">
-      <div class="panel">
-        <h2 style="margin:0 0 14px; font-size:24px; letter-spacing:-.01em;">FAQ</h2>
-
-        <details>
-          <summary>Tabacchi Cloud aggiorna davvero automaticamente le anagrafiche?</summary>
-          <p>Sì: l’obiettivo è eliminare aggiornamenti manuali e ridurre errori, mantenendo il database sempre allineato.</p>
-        </details>
-
-        <details>
-          <summary>Gli ordini Logista come vengono creati?</summary>
-          <p>Puoi inserirli manualmente oppure partire da una proposta di riordino basata sull’analisi del venduto del periodo scelto. L’ordine può essere esportato in Excel per il caricamento su Logista.</p>
-        </details>
-
-        <details>
-          <summary>Posso gestire store, patentini e distributori?</summary>
-          <p>Sì: il magazzino cloud permette visione e controllo delle giacenze e del venduto, con report dedicati.</p>
-        </details>
-
-        <details>
-          <summary>È compatibile con dispositivi di cassa e altri sistemi?</summary>
-          <p>La soluzione prevede l’interfacciamento con dispositivi comuni in tabaccheria (RT, POS, cassetti automatici, etichette elettroniche).</p>
-        </details>
-      </div>
-    </div>
-
     <div class="footer">
       <div>© A.R.S. Advanced Retail Services</div>
-      <div>Via Luigi Rizzardi 15, Concesio (BS) • P.IVA 02758580985 • <span style="cursor:pointer; text-decoration:underline;" onclick="openEmail()">commerciale [at] ars-bs.it</span></div>
+      <div>Via Luigi Rizzardi 15, Concesio (BS) • P.IVA 02758580985 • <span style="cursor:pointer; text-decoration:underline" onclick="openEmail()">commerciale [at] ars-bs.it</span></div>
     </div>
 
   </div>
