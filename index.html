@@ -5,19 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>A.R.S. – Soluzioni per Tabaccai | Tabacchi Cloud</title>
   <meta name="description" content="Tabacchi Cloud per tabaccai: aggiornamenti automatici, ordini Logista rapidi, magazzino sotto controllo." />
-  <meta name="theme-color" content="#0b1220" />
+  <meta name="theme-color" content="#0f1b33" />
 
   <style>
     :root{
-      --bg:#07101f;
-      --bg2:#0b1730;
+      /* Sfondo leggermente più chiaro rispetto a prima */
+      --bg:#0b1730;
+      --bg2:#112142;
+
       --text:#eaf0ff;
       --muted:#b9c6ea;
-      --card:rgba(255,255,255,.06);
-      --border:rgba(255,255,255,.10);
+
+      --card:rgba(255,255,255,.07);
+      --border:rgba(255,255,255,.12);
+
       --accent:#2f7ef7;
       --accent2:#5aa8ff;
-      --shadow: 0 18px 50px rgba(0,0,0,.38);
+
+      --shadow: 0 18px 50px rgba(0,0,0,.34);
       --radius:18px;
       --max:1120px;
     }
@@ -30,8 +35,8 @@
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
       color:var(--text);
       background:
-        radial-gradient(1100px 650px at 15% 0%, rgba(47,126,247,.30), transparent 60%),
-        radial-gradient(900px 600px at 90% 8%, rgba(90,168,255,.20), transparent 55%),
+        radial-gradient(1100px 650px at 15% 0%, rgba(47,126,247,.28), transparent 60%),
+        radial-gradient(900px 600px at 90% 8%, rgba(90,168,255,.18), transparent 55%),
         linear-gradient(180deg, var(--bg), var(--bg2));
       line-height:1.5;
     }
@@ -43,7 +48,7 @@
     .top{
       position:sticky; top:0; z-index:50;
       backdrop-filter: blur(10px);
-      background: rgba(7,16,31,.55);
+      background: rgba(11,23,48,.55);
       border-bottom:1px solid var(--border);
     }
     .top-inner{
@@ -62,17 +67,16 @@
       text-decoration:none;
     }
     .brand img{height:42px}
-    .brand b{font-size:13px; letter-spacing:.08em}
-    .brand span{display:block; font-size:12px; color:var(--muted)}
 
     .btn{
       padding:10px 16px;
       border-radius:999px;
       border:1px solid var(--border);
-      background: rgba(255,255,255,.06);
+      background: rgba(255,255,255,.07);
       text-decoration:none;
       font-weight:800;
     }
+    .btn:hover{transform:translateY(-1px)}
 
     /* SECTIONS */
     .section{padding:44px 0}
@@ -102,16 +106,8 @@
       margin-bottom:18px;
     }
 
-    .lead{
-      margin:0 auto 28px;
-      color:var(--muted);
-      font-size:16px;
-      max-width:62ch;
-      text-align:center;
-    }
-
     .bullets{
-      margin:28px auto 0;
+      margin:22px auto 0;
       padding:0;
       list-style:none;
       display:grid;
@@ -124,7 +120,7 @@
       align-items:flex-start;
       border:1px solid var(--border);
       border-radius:14px;
-      background: rgba(255,255,255,.04);
+      background: rgba(255,255,255,.05);
       padding:16px;
       color:var(--muted);
       font-size:15px;
@@ -133,15 +129,32 @@
       font-size:20px;
       line-height:1;
       color:var(--accent2);
+      margin-top:2px;
     }
     .bullets b{color:var(--text)}
+
+    /* Linea sottile di separazione */
+    .divider{
+      height:1px;
+      width:70%;
+      margin:26px auto 18px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.22), transparent);
+    }
+
+    .lead{
+      margin:0 auto;
+      color:var(--muted);
+      font-size:16px;
+      max-width:66ch;
+      text-align:center;
+    }
 
     .media{
       margin-top:32px;
       border-radius:var(--radius);
       overflow:hidden;
       border:1px solid var(--border);
-      background: rgba(255,255,255,.04);
+      background: rgba(255,255,255,.05);
     }
     .media img{
       width:100%;
@@ -164,7 +177,7 @@
 
     .cta{
       display:flex;
-      align-items:center;
+      align-items:flex-start;
       justify-content:space-between;
       gap:14px;
       flex-wrap:wrap;
@@ -183,6 +196,7 @@
     @media (max-width: 980px){
       h1{font-size:34px}
       .two{grid-template-columns:1fr}
+      .divider{width:90%}
     }
   </style>
 
@@ -203,9 +217,11 @@
   <!-- TOP -->
   <div class="top">
     <div class="top-inner">
-     <a class="brand" href="#">
-  <img src="assets/ars-logo.png" alt="A.R.S. logo">
-</a>
+      <!-- SOLO LOGO -->
+      <a class="brand" href="#">
+        <img src="assets/ars-logo.png" alt="A.R.S. logo">
+      </a>
+
       <a class="btn" href="#contatti">Contatti</a>
     </div>
   </div>
@@ -219,11 +235,6 @@
         <div class="trust">Soluzione professionale per tabaccai</div>
 
         <h1>Gestisci la tabaccheria senza stress.</h1>
-
-        <p class="lead">
-          <b>Tabacchi Cloud</b> ti aiuta a lavorare meglio: anagrafiche aggiornate,
-          ordini Logista rapidi e magazzino sempre allineato.
-        </p>
 
         <ul class="bullets">
           <li>
@@ -239,6 +250,14 @@
             <div><b>Magazzino sotto controllo</b><br>Store, patentini e distributori sempre sincronizzati.</div>
           </li>
         </ul>
+
+        <!-- LINEA SOTTILE + FRASE SOTTO L'ELENCO -->
+        <div class="divider"></div>
+
+        <p class="lead">
+          <b>Tabacchi Cloud</b> ti aiuta a lavorare meglio: anagrafiche aggiornate,
+          ordini Logista rapidi e magazzino sempre allineato.
+        </p>
       </div>
 
       <!-- DASHBOARD -->
@@ -274,17 +293,18 @@
       <div class="panel cta">
         <div>
           <h2>Contatti</h2>
-          <p>
-            <strong>Email:</strong>
+          <p style="margin:12px 0 0; color:var(--muted); font-size:15px;">
+            <strong style="color:var(--text);">Email:</strong>
             <span style="cursor:pointer; text-decoration:underline" onclick="openEmail()">info@ars-bs.it</span><br>
-            <strong>Tel.:</strong>
+            <strong style="color:var(--text);">Tel.:</strong>
             <a href="tel:+390302054655" style="text-decoration:underline">030 2054655</a>
           </p>
         </div>
 
-        <div>
-          <a href="https://wa.me/393347257605" target="_blank" style="display:inline-flex; align-items:center; gap:10px; text-decoration:none; font-weight:700;">
-            <svg width="28" height="28" viewBox="0 0 32 32">
+        <div style="margin-top:6px;">
+          <a href="https://wa.me/393347257605" target="_blank" rel="noopener"
+             style="display:inline-flex; align-items:center; gap:10px; text-decoration:none; font-weight:800;">
+            <svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true">
               <path fill="#25D366"
                 d="M16.001 3C9.373 3 4 8.373 4 15c0 2.504.777 4.83 2.1 6.76L4 29l7.414-1.948A11.93 11.93 0 0 0 16 27c6.627 0 12-5.373 12-12S22.628 3 16.001 3z"/>
             </svg>
