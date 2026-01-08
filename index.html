@@ -354,6 +354,11 @@
   </style>
 
   <script>
+    // forza apertura dall'alto se il link arriva con ancora
+if (window.location.hash) {
+  history.replaceState(null, "", window.location.pathname);
+  window.scrollTo(0, 0);
+}
     function openEmail(){
       const user = "info";
       const domain = "ars-bs.it";
