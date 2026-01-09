@@ -472,8 +472,6 @@
       <!-- ✅ QUI SOLO HTML, niente CSS incollato dentro -->
       <a class="brand" href="#">
         <img src="assets/ars-logo.png" alt="A.R.S." class="logo-main">
-        <img src="assets/passepartout-logo.jpg" alt="Passepartout" class="logo-partner">
-        <img src="assets/tabacchi-cloud-logo.jpg" alt="Tabacchi Cloud" class="logo-partner">
       </a>
 
       <a class="btn" href="#contatti">Contatti</a>
@@ -559,12 +557,70 @@
       </div>
     </div>
 
-    <div class="footer">
-      <div>© A.R.S. Advanced Retail Services</div>
-      <div>Via Luigi Rizzardi 15, Concesio (BS)</div>
-    </div>
-
+<div class="footer">
+  <div class="footer-main">
+    © A.R.S. Advanced Retail Services
   </div>
+
+  <div class="footer-partners">
+    <div class="footer-label">in collaborazione con</div>
+
+    <div class="footer-logos">
+      <img src="assets/passepartout-logo.jpg" alt="Passepartout">
+      <img src="assets/tabacchi-cloud-logo.jpg" alt="Tabacchi Cloud">
+    </div>
+  </div>
+
+  <div class="footer-address">
+    Via Luigi Rizzardi 15, Concesio (BS)
+  </div>
+</div>
+.footer{
+  margin:40px 0 24px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:14px;
+  text-align:center;
+  color:var(--muted);
+  font-size:13px;
+}
+
+.footer-main{
+  font-weight:600;
+}
+
+.footer-partners{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:10px;
+}
+
+.footer-label{
+  font-size:12px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  opacity:.8;
+}
+
+.footer-logos{
+  display:flex;
+  align-items:center;
+  gap:28px;
+}
+
+.footer-logos img{
+  height:52px;       /* QUI li rendiamo belli grandi */
+  width:auto;
+  opacity:.95;
+}
+
+.footer-address{
+  font-size:12px;
+  opacity:.8;
+}
+
 
   <!-- LIGHTBOX -->
   <div id="lightbox" class="lightbox" onclick="closeLightbox()">
