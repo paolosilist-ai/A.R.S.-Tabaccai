@@ -451,9 +451,29 @@
 
   <div class="top">
     <div class="top-inner">
-      <a class="brand" href="#">
-        <img src="assets/ars-logo.png" alt="A.R.S. logo">
-      </a>
+<div class="brand">
+  <img src="assets/ars-logo.png" alt="A.R.S." class="logo-main">
+
+  <img src="assets/passepartout-logo.png" alt="Passepartout" class="logo-partner">
+
+  <img src="assets/tabacchi-cloud-logo.png" alt="Tabacchi Cloud" class="logo-partner">
+</div>
+      .brand{
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+
+.logo-main{
+  height:42px;
+  width:auto;
+}
+
+.logo-partner{
+  height:28px;
+  width:auto;
+  opacity:.9;
+}
       <a class="btn" href="#contatti">Contatti</a>
     </div>
   </div>
