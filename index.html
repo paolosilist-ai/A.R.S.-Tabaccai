@@ -20,7 +20,7 @@
   <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="Tabacchi Cloud – logo" />
 
-  <!-- Twitter -->
+  <!-- Twitter / fallback -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="TABACCHI.CLOUD" />
   <meta name="twitter:description" content="Per gestire la tua tabaccheria in modo intuitivo, rapido e con prezzi sempre aggiornati." />
@@ -34,6 +34,7 @@
       --muted:#b9c6ea;
       --card:rgba(255,255,255,.07);
       --border:rgba(255,255,255,.12);
+      --accent:#2f7ef7;
       --accent2:#5aa8ff;
       --shadow:0 18px 50px rgba(0,0,0,.34);
       --radius:18px;
@@ -52,18 +53,25 @@
         radial-gradient(900px 600px at 90% 8%, rgba(90,168,255,.18), transparent 55%),
         linear-gradient(180deg,var(--bg),var(--bg2));
       line-height:1.5;
+
       -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: geometricPrecision;
+
+      padding-left: env(safe-area-inset-left);
+      padding-right: env(safe-area-inset-right);
     }
 
     a{color:inherit}
-
     .wrap{
       max-width:var(--max);
       margin:0 auto;
       padding:20px;
+      padding-left: max(20px, env(safe-area-inset-left));
+      padding-right: max(20px, env(safe-area-inset-right));
     }
 
-    /* HEADER */
+    /* TOP */
     .top{
       position:sticky;top:0;z-index:50;
       backdrop-filter:blur(10px);
@@ -77,18 +85,33 @@
       display:flex;
       justify-content:space-between;
       align-items:center;
+      gap:14px;
+      padding-left: max(20px, env(safe-area-inset-left));
+      padding-right: max(20px, env(safe-area-inset-right));
     }
-    .brand img{height:42px;display:block}
+    .brand{display:flex;align-items:center;text-decoration:none}
+    .brand img{height:42px;width:auto;display:block}
 
     .btn{
       padding:10px 18px;
       border-radius:999px;
       border:1px solid var(--border);
       background:rgba(255,255,255,.07);
-      font-weight:800;
       text-decoration:none;
+      font-weight:800;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      user-select:none;
+      transition: transform .12s ease;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+      font-size:16px;
     }
+    .btn:hover{transform:translateY(-1px)}
 
+    /* SECTIONS */
     .section{padding:50px 0}
     .panel{
       border:1px solid var(--border);
@@ -104,13 +127,16 @@
       font-size:46px;
       font-weight:900;
       letter-spacing:.06em;
+      line-height:1.05;
     }
     .hero-sub{
       text-align:center;
       margin-top:14px;
+      font-size:18px;
       color:var(--muted);
     }
 
+    /* Micro-animazione premium lista */
     .hero-list{
       margin-top:22px;
       display:flex;
@@ -120,7 +146,59 @@
       font-size:20px;
       font-weight:900;
     }
-    .hero-item{color:var(--accent2)}
+
+    .hero-item{
+      position:relative;
+      color:var(--accent2);
+      opacity:0;
+      transform:translateY(10px);
+      animation: heroIn .7s cubic-bezier(.2,.9,.2,1) forwards;
+      padding:2px 6px;
+      border-radius:10px;
+      transition: filter .2s ease, text-shadow .2s ease, background .2s ease, transform .15s ease;
+      will-change: transform, opacity;
+    }
+    .hero-item:nth-child(1){animation-delay:.05s}
+    .hero-item:nth-child(2){animation-delay:.18s}
+    .hero-item:nth-child(3){animation-delay:.31s}
+
+    .hero-item::after{
+      content:"";
+      position:absolute;
+      left:50%;
+      bottom:-7px;
+      width:0;
+      height:2px;
+      background: linear-gradient(90deg, transparent, rgba(90,168,255,.95), transparent);
+      transform:translateX(-50%);
+      opacity:0;
+      animation: underlineIn .6s ease forwards;
+    }
+    .hero-item:nth-child(1)::after{animation-delay:.35s}
+    .hero-item:nth-child(2)::after{animation-delay:.48s}
+    .hero-item:nth-child(3)::after{animation-delay:.61s}
+
+    @media (hover:hover){
+      .hero-item:hover{
+        background: rgba(255,255,255,.06);
+        text-shadow: 0 0 18px rgba(90,168,255,.45);
+        filter: brightness(1.06);
+        transform: translateY(-1px);
+      }
+    }
+
+    @keyframes heroIn{ to { opacity:1; transform:translateY(0); } }
+    @keyframes underlineIn{ from{ width:0; opacity:0; } to{ width:60%; opacity:1; } }
+
+    @media (prefers-reduced-motion: reduce){
+      .hero-item,
+      .hero-item::after{
+        animation:none;
+        opacity:1;
+        transform:none;
+        width:60%;
+      }
+    }
 
     .divider{
       height:1px;
@@ -137,12 +215,13 @@
       font-size:15px;
     }
 
-    /* IMMAGINI */
+    /* IMMAGINI: griglia 2 colonne */
     .media-grid{
       margin-top:26px;
       display:grid;
       grid-template-columns:1fr 1fr;
       gap:14px;
+      align-items:start;
     }
     .media{
       border-radius:var(--radius);
@@ -150,7 +229,55 @@
       border:1px solid var(--border);
       background:rgba(255,255,255,.05);
     }
-    .media img{width:100%;display:block}
+    .media a{
+      display:block;
+      position:relative;
+      cursor:zoom-in;
+      text-decoration:none;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+    .media img{width:100%;display:block;height:auto}
+
+    .media a::after{
+      content:"Ingrandisci";
+      position:absolute;
+      right:12px;
+      bottom:12px;
+      font-size:12px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.18);
+      background:rgba(0,0,0,.35);
+      color:rgba(255,255,255,.92);
+      backdrop-filter:blur(6px);
+    }
+
+    /* PROBLEMA / SOLUZIONE */
+    .two{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+    }
+    .section-title{
+      margin:0 0 12px;
+      text-transform:uppercase;
+      letter-spacing:.14em;
+      font-size:14px;
+      position:relative;
+      padding-bottom:12px;
+    }
+    .section-title::after{
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:0;
+      width:72px;
+      height:1px;
+      background:rgba(255,255,255,.22);
+    }
+    .list{color:var(--muted);margin:10px 0 0;padding-left:18px}
+    .list li{margin:6px 0}
 
     /* CONTATTI */
     .contacts-title{
@@ -160,56 +287,182 @@
       text-transform:uppercase;
       margin:0 0 18px;
     }
+
     .contacts-box{
       display:flex;
       flex-direction:column;
       align-items:center;
       gap:12px;
+      text-align:center;
     }
+
+    /* ✅ WhatsApp verde ufficiale */
     .wa-icon{
-      width:46px;height:46px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.2);
+      width:54px;
+      height:54px;
+      border-radius:50%;
+      background:#25D366;
       display:flex;
       align-items:center;
       justify-content:center;
-      background:rgba(255,255,255,.08);
       text-decoration:none;
+      box-shadow:0 8px 24px rgba(37,211,102,.45);
+      transition: transform .15s ease, box-shadow .15s ease;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+    .wa-icon:hover{
+      transform:translateY(-2px);
+      box-shadow:0 12px 30px rgba(37,211,102,.6);
+    }
+
+    .wa-label{
+      font-size:14px;
+      color:var(--muted);
+      margin-top:-10px;
+      letter-spacing:.10em;
+      text-transform:uppercase;
     }
 
     .footer{
-      margin:32px 0;
-      text-align:center;
+      margin:22px 0;
+      display:flex;
+      justify-content:space-between;
       font-size:12px;
       color:var(--muted);
+      gap:10px;
+      flex-wrap:wrap;
     }
 
+    /* LIGHTBOX */
+    .lightbox{
+      position:fixed;
+      inset:0;
+      background: rgba(0,0,0,.72);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:18px;
+      z-index:2000;
+    }
+    .lightbox.open{display:flex}
+    .lightbox-inner{
+      width:min(1100px, 96vw);
+      max-height:88vh;
+      position:relative;
+    }
+    .lightbox-img{
+      width:100%;
+      height:auto;
+      max-height:88vh;
+      object-fit:contain;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.04);
+      display:block;
+    }
+    .lightbox-close{
+      position:absolute;
+      top:-10px;
+      right:-10px;
+      width:40px;
+      height:40px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.18);
+      background: rgba(0,0,0,.45);
+      color:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      font-weight:900;
+      user-select:none;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+    .lightbox-caption{
+      margin-top:10px;
+      color: rgba(255,255,255,.85);
+      font-size:13px;
+      text-align:center;
+    }
+
+    /* RESPONSIVE */
     @media(max-width:900px){
-      .media-grid{grid-template-columns:1fr}
+      .two,.media-grid{grid-template-columns:1fr}
       .hero-title{font-size:36px}
+      .divider{width:90%}
+    }
+
+    /* iPhone tuning (Safari/WebView WhatsApp) */
+    @media (max-width: 480px){
+      .hero-title{
+        font-size:34px;
+        letter-spacing:.02em;
+        padding-left:2px;
+      }
+      .hero-sub{font-size:16px}
+      .hero-list{font-size:18px; gap:10px}
+      .media-grid{gap:10px}
+      .panel{padding:26px}
+      .section{padding:42px 0}
     }
   </style>
+
+  <script>
+    function openEmail(){
+      const user = "info";
+      const domain = "ars-bs.it";
+      window.location.href =
+        "mailto:" + user + "@" + domain +
+        "?subject=" + encodeURIComponent("Richiesta informazioni Tabacchi Cloud");
+      return false;
+    }
+
+    function openLightbox(src, caption){
+      const box = document.getElementById("lightbox");
+      const img = document.getElementById("lightboxImg");
+      const cap = document.getElementById("lightboxCaption");
+      img.src = src;
+      cap.textContent = caption || "";
+      box.classList.add("open");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeLightbox(){
+      const box = document.getElementById("lightbox");
+      const img = document.getElementById("lightboxImg");
+      box.classList.remove("open");
+      img.src = "";
+      document.body.style.overflow = "";
+    }
+
+    document.addEventListener("keydown", (e) => {
+      if(e.key === "Escape") closeLightbox();
+    });
+  </script>
 </head>
 
 <body>
 
   <div class="top">
     <div class="top-inner">
-      <div class="brand">
-        <img src="assets/ars-logo.png" alt="A.R.S.">
-      </div>
+      <a class="brand" href="#">
+        <img src="assets/ars-logo.png" alt="A.R.S. logo">
+      </a>
       <a class="btn" href="#contatti">Contatti</a>
     </div>
   </div>
 
   <div class="wrap">
 
+    <!-- HERO -->
     <div class="section">
       <div class="panel">
         <div class="hero-title">TABACCHI.CLOUD</div>
         <div class="hero-sub">Per gestire la tua tabaccheria in modo:</div>
 
-        <div class="hero-list">
+        <div class="hero-list" aria-label="Vantaggi principali">
           <div class="hero-item">Intuitivo</div>
           <div class="hero-item">Rapido</div>
           <div class="hero-item">Con prezzi sempre aggiornati</div>
@@ -223,33 +476,77 @@
         </p>
       </div>
 
+      <!-- IMMAGINI (cliccabili + affiancate) -->
       <div class="media-grid">
         <div class="media">
-          <img src="assets/dashboard-ordini.png" alt="Dashboard ordini">
+          <a href="#" onclick="openLightbox('assets/dashboard-ordini.png','Dashboard ordini – Tabacchi Cloud'); return false;">
+            <img src="assets/dashboard-ordini.png" alt="Dashboard ordini Tabacchi Cloud">
+          </a>
         </div>
+
         <div class="media">
-          <img src="assets/statistiche.png" alt="Statistiche venduto">
+          <a href="#" onclick="openLightbox('assets/statistiche.png','Statistiche venduto – Tabacchi Cloud'); return false;">
+            <img src="assets/statistiche.png" alt="Statistiche venduto Tabacchi Cloud">
+          </a>
         </div>
       </div>
     </div>
 
+    <!-- PROBLEMA / SOLUZIONE -->
+    <div class="section two">
+      <div class="panel">
+        <h2 class="section-title">Problemi comuni</h2>
+        <ul class="list">
+          <li>Aggiornamenti manuali</li>
+          <li>Errori e incongruenze</li>
+          <li>Ordini complessi</li>
+          <li>Magazzino poco chiaro</li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <h2 class="section-title">La soluzione</h2>
+        <ul class="list">
+          <li>Allineamento automatico</li>
+          <li>Ordini rapidi</li>
+          <li>Dati sempre aggiornati</li>
+          <li>Gestione senza stress</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- CONTATTI -->
     <div class="section" id="contatti">
       <div class="panel contacts-box">
         <div class="contacts-title">Contatti</div>
 
-        <a class="wa-icon" href="https://wa.me/393347257605" target="_blank" aria-label="WhatsApp">
-          📱
+        <a class="wa-icon" href="https://wa.me/393347257605" target="_blank" rel="noopener" aria-label="Contattaci su WhatsApp">
+          <svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true">
+            <path fill="#ffffff"
+              d="M16.001 3C9.373 3 4 8.373 4 15c0 2.504.777 4.83 2.1 6.76L4 29l7.414-1.948A11.93 11.93 0 0 0 16 27c6.627 0 12-5.373 12-12S22.628 3 16.001 3zm6.59 16.452c-.277.777-1.605 1.492-2.212 1.578-.577.085-1.303.121-2.102-.132-.486-.155-1.107-.361-1.91-.71-3.36-1.451-5.553-4.862-5.722-5.084-.167-.222-1.367-1.82-1.367-3.469 0-1.65.863-2.459 1.17-2.799.307-.341.668-.426.89-.426.223 0 .445.002.64.01.206.008.482-.078.756.578.277.67.94 2.318 1.022 2.486.085.167.14.362.028.584-.113.222-.167.361-.334.556-.167.195-.351.435-.501.585-.167.167-.34.35-.146.684.195.334.866 1.428 1.86 2.314 1.279 1.14 2.357 1.49 2.69 1.655.334.167.528.14.723-.084.195-.223.834-.973 1.056-1.306.223-.334.445-.278.75-.167.307.11 1.94.916 2.274 1.083.334.167.556.25.64.39.084.14.084.807-.195 1.584z"/>
+          </svg>
         </a>
+        <div class="wa-label">WhatsApp</div>
 
-        <div>Email: <b>info@ars-bs.it</b></div>
-        <div>Tel: <b>030 2054655</b></div>
+        <div>Email: <b><span style="cursor:pointer; text-decoration:underline" onclick="openEmail()">info@ars-bs.it</span></b></div>
+        <div>Tel: <b><a href="tel:+390302054655" style="text-decoration:underline">030 2054655</a></b></div>
       </div>
     </div>
 
     <div class="footer">
-      © A.R.S. Advanced Retail Services – Via Luigi Rizzardi 15, Concesio (BS)
+      <div>© A.R.S. Advanced Retail Services</div>
+      <div>Via Luigi Rizzardi 15, Concesio (BS)</div>
     </div>
 
+  </div>
+
+  <!-- LIGHTBOX OVERLAY -->
+  <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+    <div class="lightbox-inner" onclick="event.stopPropagation()">
+      <div class="lightbox-close" onclick="closeLightbox()">×</div>
+      <img id="lightboxImg" class="lightbox-img" alt="Anteprima immagine">
+      <div id="lightboxCaption" class="lightbox-caption"></div>
+    </div>
   </div>
 
 </body>
