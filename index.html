@@ -54,12 +54,10 @@
         linear-gradient(180deg,var(--bg),var(--bg2));
       line-height:1.5;
 
-      /* iOS text rendering */
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       text-rendering: geometricPrecision;
 
-      /* iPhone safe-area (notch) */
       padding-left: env(safe-area-inset-left);
       padding-right: env(safe-area-inset-right);
     }
@@ -92,8 +90,36 @@
       padding-left: max(20px, env(safe-area-inset-left));
       padding-right: max(20px, env(safe-area-inset-right));
     }
-    .brand{display:flex;align-items:center;text-decoration:none}
-    .brand img{height:42px;width:auto;display:block}
+
+    /* ✅ BRAND LOGHI (corretto) */
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      text-decoration:none;
+      padding:6px 10px;
+      border-radius:999px;
+      background:rgba(255,255,255,.06);       /* aiuta a staccare i loghi */
+      border:1px solid rgba(255,255,255,.10); /* leggero contorno */
+    }
+    .logo-main{
+      height:42px;
+      width:auto;
+      display:block;
+    }
+    .logo-partner{
+      height:28px;
+      width:auto;
+      display:block;
+      opacity:.95;
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,.25)); /* leggibilità su blu */
+    }
+
+    @media(max-width:520px){
+      .brand{gap:10px; padding:6px 8px}
+      .logo-main{height:36px}
+      .logo-partner{height:22px}
+    }
 
     .btn{
       padding:10px 18px;
@@ -139,7 +165,6 @@
       color:var(--muted);
     }
 
-    /* Micro-animazione premium lista */
     .hero-list{
       margin-top:22px;
       display:flex;
@@ -191,13 +216,8 @@
       }
     }
 
-    @keyframes heroIn{
-      to { opacity:1; transform:translateY(0); }
-    }
-    @keyframes underlineIn{
-      from{ width:0; opacity:0; }
-      to{ width:60%; opacity:1; }
-    }
+    @keyframes heroIn{ to { opacity:1; transform:translateY(0); } }
+    @keyframes underlineIn{ from{ width:0; opacity:0; } to{ width:60%; opacity:1; } }
 
     @media (prefers-reduced-motion: reduce){
       .hero-item,
@@ -224,7 +244,7 @@
       font-size:15px;
     }
 
-    /* IMMAGINI: griglia 2 colonne */
+    /* IMMAGINI */
     .media-grid{
       margin-top:26px;
       display:grid;
@@ -296,7 +316,6 @@
       text-transform:uppercase;
       margin:0 0 18px;
     }
-
     .contacts-box{
       display:flex;
       flex-direction:column;
@@ -304,7 +323,6 @@
       gap:12px;
       text-align:center;
     }
-
     .wa-icon{
       width:46px;height:46px;
       border-radius:999px;
@@ -398,12 +416,12 @@
       .divider{width:90%}
     }
 
-    /* iPhone tuning (Safari/WebView WhatsApp) */
+    /* iPhone tuning */
     @media (max-width: 480px){
       .hero-title{
         font-size:34px;
-        letter-spacing:.02em; /* centratura ottica su iOS */
-        padding-left:2px;     /* micro-compensazione */
+        letter-spacing:.02em;
+        padding-left:2px;
       }
       .hero-sub{font-size:16px}
       .hero-list{font-size:18px; gap:10px}
@@ -451,29 +469,13 @@
 
   <div class="top">
     <div class="top-inner">
-<div class="brand">
-  <img src="assets/ars-logo.png" alt="A.R.S." class="logo-main">
+      <!-- ✅ QUI SOLO HTML, niente CSS incollato dentro -->
+      <a class="brand" href="#">
+        <img src="assets/ars-logo.png" alt="A.R.S." class="logo-main">
+        <img src="assets/passepartout-logo.png" alt="Passepartout" class="logo-partner">
+        <img src="assets/tabacchi-cloud-logo.png" alt="Tabacchi Cloud" class="logo-partner">
+      </a>
 
-  <img src="assets/passepartout-logo.png" alt="Passepartout" class="logo-partner">
-
-  <img src="assets/tabacchi-cloud-logo.png" alt="Tabacchi Cloud" class="logo-partner">
-</div>
-      .brand{
-  display:flex;
-  align-items:center;
-  gap:14px;
-}
-
-.logo-main{
-  height:42px;
-  width:auto;
-}
-
-.logo-partner{
-  height:28px;
-  width:auto;
-  opacity:.9;
-}
       <a class="btn" href="#contatti">Contatti</a>
     </div>
   </div>
@@ -544,7 +546,6 @@
       <div class="panel contacts-box">
         <div class="contacts-title">Contatti</div>
 
-        <!-- solo icona cliccabile -->
         <a class="wa-icon" href="https://wa.me/393347257605" target="_blank" rel="noopener" aria-label="Apri WhatsApp">
           <svg width="20" height="20" viewBox="0 0 32 32" aria-hidden="true">
             <path fill="#25D366"
@@ -565,7 +566,7 @@
 
   </div>
 
-  <!-- LIGHTBOX OVERLAY -->
+  <!-- LIGHTBOX -->
   <div id="lightbox" class="lightbox" onclick="closeLightbox()">
     <div class="lightbox-inner" onclick="event.stopPropagation()">
       <div class="lightbox-close" onclick="closeLightbox()">×</div>
